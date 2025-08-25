@@ -9,10 +9,21 @@
 }
 
 .hero.dark {
-  background: #181c24;
-  color: #f5f5f5;
-}
+   background: #2a3241;
+  color:#FF69B4;
+  /* text-shadow: 0 0 5px #ff4081, 0 0 10px #ff4081, 0 0 15px #ff4081; */
 
+  font-weight: bolder; 
+}
+.radial{
+  background: radial-gradient(circle, #07d400, #40ffff, #4dff07);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 5rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
 .hero.light {
   background: #f5f5f5;
   color: #181c24;
@@ -20,13 +31,21 @@
 
 .toggle-mode {
   position: absolute;
-  top: 2rem;
-  right: 2rem;
-  background: none;
-  border: none;
-  font-size: 2rem;
+  top: 0;
+  
+  
+  right: 1rem;
+  background: black;
+  border: 3px solid #00bcd4;
+  font-size: 1rem;
   cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
   transition: transform 0.2s;
+  padding: 5px;
+  color: #f5f5f5;
+  border-radius: 50%;
+  z-index: 1000;
 }
 
 .toggle-mode:hover {
@@ -36,7 +55,7 @@
 .profile-card {
   background: rgba(36, 37, 42, 0.8);
   border-radius: 2rem;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  box-shadow: 0 8px 32px rgba(88, 192, 152, 0.18),0px 0px 3px rgba(84, 187, 118, 0.1);
   padding: 2rem 2.5rem;
   display: flex;
   align-items: center;
@@ -142,7 +161,7 @@
   padding: 2rem 1.5rem;
   min-width: 260px;
   max-width: 320px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+  box-shadow: 0 4px 16px rgba(122, 209, 141, 0.13),0px 0px 3px lime;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -158,15 +177,23 @@
 
 .portfolio-card:hover {
   transform: translateY(-8px) scale(1.03) rotate(-1deg);
-  box-shadow: 0 8px 32px rgba(0,188,212,0.18);
+  box-shadow: 0 8px 32px rgba(33, 229, 255, 0.18);
 }
 
 .card-icon {
   font-size: 2rem;
   margin-bottom: 1rem;
-  animation: shake 1.5s infinite;
-}
+  animation: shake 1.5s 4;
+ } 
 
+.card-icon img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.5rem;
+  animation: shake 1.5s 4;
+}
 @keyframes shake {
   0% { transform: rotate(0deg);}
   20% { transform: rotate(-10deg);}
@@ -199,4 +226,40 @@
     flex-direction: column;
     gap: 1.5rem;
   }
+}
+.toggle-gradient{
+  position: absolute;
+  border: 3px solid #94b2b6;
+  box-shadow: #94b2b6 0px 0px 10px;
+  top: 0%;
+  background: black;
+  z-index: 1000;
+  border-radius: 20%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 0.5rem;
+  color: #d5dfe0;
+  
+  
+}
+.toggle-gradient:hover {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+@media (max-width: 600px) {
+  .toggle-mode {
+    top: 1rem;
+    right: 1rem;
+  }
+  .toggle-gradient {
+    top: 5rem;
+    right: 1rem;
+  }
+}
+  .footer-root {
+  background: linear-gradient(90deg, #168468 60%, #375bc8 100%);
+  color: #fff;
+  padding: 2.5rem 1rem 1rem 1rem;
+  font-family: inherit;
 }

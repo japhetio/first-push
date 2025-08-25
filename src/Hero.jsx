@@ -42,7 +42,7 @@ function Hero() {
               style={{
                 color: gradientMode ? 'linear-gradient(90deg, #ff8a00, #e52e71)' : undefined,
                 background: gradientMode
-                  ? 'linear-gradient(90deg, #ff8a00, #e52e71)'
+                  ? 'linear-gradient(90deg, #44d637ff, #e52e71)'
                   : undefined,
                 WebkitBackgroundClip: gradientMode ? 'text' : undefined,
                 WebkitTextFillColor: gradientMode ? 'transparent' : undefined,
@@ -100,9 +100,9 @@ function Hero() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.5 }}
       >
-        <h2 className="details-title">
+        <h1 className="details-title">
           {gradientMode ? '🌈 My Projects Shine with Gradients!' : 'Why My Projects Stand Out?'}
-        </h2>
+        </h1>
         <ul className="details-list">
           <li>
             ⚡ Built with modern React, Framer Motion, and responsive design
@@ -121,7 +121,7 @@ function Hero() {
               ? '✨ Gradient mode enabled for extra flair!'
               : '💡 Always learning and implementing the latest tech trends'}
           </li>
-        </ul>
+        </ul>  <h1 className='radial'>           </h1>
       </motion.div>
       <motion.div
         className="cards-row"
@@ -152,15 +152,16 @@ function Hero() {
                   }
                 : {}
             }
-          >
-            <div className="card-icon">🚀</div>
+          > 
+          <h1 className='radial'> japhet             </h1>
+            <div className="card-icon">🚀 <img src="japhet.avif" alt="" srcset="" /></div>
             <h3>
               {gradientMode ? `Gradient Project ${i}` : `Project ${i}`}
             </h3>
             <p>
               {gradientMode
                 ? 'This card pops with a gradient background and vibrant text!'
-                : 'Modern, animated, and responsive project card.  Add your project details here!'}
+                : `Hello! am Japhet and this is my Modern, animated, and responsive project card.  Add your project details here!`}
             </p>
             <Link to="/about" className="card-link">
               See More →
@@ -168,7 +169,10 @@ function Hero() {
           </motion.div>
         ))}
       </motion.div>
+      
+      
     </div>
+
   );
 }
 

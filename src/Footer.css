@@ -1,5 +1,5 @@
  .footer-root {
-  background: linear-gradient(90deg, #23272f 60%, #00bcd4 100%);
+background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px);
   color: #fff;
   padding: 2.5rem 1rem 1rem 1rem;
   font-family: inherit;
