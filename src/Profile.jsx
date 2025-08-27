@@ -199,8 +199,7 @@ const Profile= () => {
           ))}
         </div>
       </div>
-
-      <div style={styles.section}>
+ <div style={styles.section}>
         <h2 style={styles.sectionTitle}>📬 Contact Me</h2>
         <form style={styles.form}>
           <input type="text" placeholder="Your Name" style={styles.input} required />
@@ -209,6 +208,7 @@ const Profile= () => {
           <input type="email" placeholder="Your Email" required style={styles.input} />
           <textarea placeholder="Your Message" rows="5" required style={styles.textarea}></textarea>
           <button type="submit" style={styles.submitBtn}>Send Message</button>
+     
         </form>
       </div>
 

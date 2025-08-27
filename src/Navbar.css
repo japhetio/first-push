@@ -1,13 +1,17 @@
 .container {
-  background: #23272f;
+  background: rgba(35, 39, 47, 0.85);
+  backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
   padding: 0 2rem;
-  height: 70px;
+  height: 75px;
   color: #fff;
-  box-shadow: 0 2px 8px rgba(129, 127, 127, 0.07);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .brand {
@@ -18,13 +22,10 @@
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #00bcd4, #ff4081, #e6b105);
+  background: linear-gradient(90deg, #00bcd4, #00bcd4); /* keep text blue */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
 }
-
 
 .first {
   font-weight: bold;
@@ -36,59 +37,51 @@ ul {
   gap: 2rem;
   margin: 0;
   padding: 0;
+  position: relative;
+}
+
+ul li {
+  position: relative;
 }
 
 ul li a {
-  color: #fff;
+  color: #00bcd4; /* blue link color */
   text-decoration: none;
   font-size: 1.1rem;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
-  overflow: hidden;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: color 0.3s, background 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
 }
 
 ul li a:hover,
 ul li a:focus {
-  background: #00bcd4;
-  color: #23272f;
+  background: rgba(0, 188, 212, 0.2); /* subtle blue highlight */
+  color: #00bcd4;
 }
-ul li a::after {
-  content: '';
-  display: block;
+
+ul li a.active {
+  font-weight: bold;
+  color: #00bcd4;
+}
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   height: 3px;
   width: 0;
-  background: linear-gradient(90deg, #00bcd4, #ff4081, #ffc107);
-  border-radius: 2px;
-  transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-ul li a:hover::after,
-ul li a:focus::after {
-  width: 100%;
-}
-ul li a.active {
-  color: #00bcd4;
-  font-weight: bold;
+  border-radius: 3px;
+  background: #00bcd4; /* blue underline */
+  transition: width 0.3s;
 }
 
-
-
-ul li a.active::after {
+ul li a:hover .underline,
+ul li a.active .underline {
   width: 100%;
-  background: linear-gradient(90deg, #00bcd4, #ff4081, #ffc107);
 }
-ul li a.active:hover::after,
-ul li a.active:focus::after {
-  width: 100%;
-  background: linear-gradient(90deg, #00bcd4, #ff4081, #ffc107);
-}
-ul li a.active {
-  color: #00bcd4;
-  font-weight: bold;
-}
+
 .brand-area {
   display: flex;
   align-items: center;
@@ -108,8 +101,8 @@ ul li a.active {
 }
 
 @keyframes bounce {
-  0% { transform: translateY(0);}
-  100% { transform: translateY(-15px);}
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-12px); }
 }
 
 .speech-bubble {
@@ -133,68 +126,23 @@ ul li a.active {
   opacity: 1;
 }
 
-/* ...keep your other styles below... */
 .robot-bounce:hover .robot-icon,
 .robot-bounce:focus .robot-icon {
   color: #00bcd4;
 }
-.robot-bounce:hover .robot-icon::before,
-.robot-bounce:focus .robot-icon::before {
-  content: '🤖';
-  position: absolute;
-  left: -30px;
-  top: -5px;
-  font-size: 1.5rem;
-  transition: transform 0.3s;
-}
+
+/* Responsive */
 @media (max-width: 900px) {
-   .container {
-      padding: 0 1rem;
-   }
-   ul {
-      gap: 1rem;
-   }
-   .brand {
-      font-size: 1.5rem;
-   }
-   .robot-icon {
-      font-size: 1.7rem;
-   }
+  .container { padding: 0 1rem; }
+  ul { gap: 1rem; }
+  .brand { font-size: 1.7rem; }
+  .robot-icon { font-size: 1.8rem; }
 }
 
 @media (max-width: 600px) {
-   .container {
-      flex-direction: column;
-      height: auto;
-      padding: 0.5rem 0.5rem;
-      align-items: flex-start;
-   }
-   .brand-area {
-      width: 100%;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-   }
-   ul {
-      flex-direction: column;
-      gap: 0.5rem;
-      width: 100%;
-   }
-   ul li a {
-      width: 100%;
-      display: block;
-      text-align: left;
-      padding: 10px 8px;
-      font-size: 1rem;
-   }
-   .speech-bubble {
-      left: 0;
-      top: 120%;
-      font-size: 0.95rem;
-      padding: 0.3rem 0.6rem;
-   }
-}
-ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.1rem;
+  .container { flex-direction: column; height: auto; padding: 0.5rem; align-items: flex-start; }
+  .brand-area { width: 100%; justify-content: space-between; margin-bottom: 0.5rem; }
+  ul { flex-direction: column; gap: 0.5rem; width: 100%; }
+  ul li a { width: 100%; text-align: left; font-size: 1rem; }
+  .speech-bubble { left: 0; top: 120%; font-size: 0.95rem; padding: 0.3rem 0.6rem; }
 }

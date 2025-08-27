@@ -1,32 +1,60 @@
 import React from 'react';
-import {  Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
+import { motion } from 'framer-motion';
 
 function Navbar() {
+  const location = useLocation();
+
+  const links = [
+    { label: 'HOME', path: '/home' },
+    { label: 'PROFILE', path: '/profile' },
+    { label: 'POLIFOLIO', path: '/Polifolio' },
+    { label: 'ABOUT', path: '/About' },
+    { label: 'CONTACT', path: '/contact' },
+  ];
+
   return (
-    <>
-    <div className="container">
+    <motion.div
+      className="container"
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, type: 'spring', stiffness: 120 }}
+    >
       <div className="brand-area">
-        <div className="robot-bounce">
+        <motion.div
+          className="robot-bounce"
+          whileHover={{ scale: 1.2 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
           <span role="img" aria-label="robot" className="robot-icon">🤖</span>
           <span className="speech-bubble">Welcome</span>
-        </div>
+        </motion.div>
         <div className="brand gradient-text">
           <span className="first">H</span>onor
         </div>
       </div>
-      <div>
-        <ul>
-          <li><Link to="/home">HOME</Link></li>
-          <li><Link to="/profile">PROFILE</Link></li>
-          <li><Link to="/Polifolio">Polifolio</Link></li>
-          <li><Link to="/About">About</Link></li>
-          <li><Link to="/contact">CONTACT</Link></li>
-        </ul>
-      </div>
-    </div>
-  <hr className="navbar-divider" /> 
-  </>
+      <ul>
+        {links.map((link, idx) => (
+          <motion.li
+            key={idx}
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <Link 
+              to={link.path} 
+              className={location.pathname === link.path ? 'active' : ''}
+            >
+              {link.label}
+              <motion.div 
+                className="underline"
+                layoutId={location.pathname === link.path ? 'underline' : ''}
+              />
+            </Link>
+          </motion.li>
+        ))}
+      </ul>
+    </motion.div>
   );
 }
 
